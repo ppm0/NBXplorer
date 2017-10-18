@@ -25,6 +25,7 @@ namespace NBXplorer
 		public static void Main(string[] args)
 		{
 			var processor = new ConsoleLoggerProcessor();
+		    NBitcoin.Litecoin.Networks.Register();
 			Logs.Configure(new FuncLoggerFactory(i => new CustomerConsoleLogger(i, (a, b) => true, false, processor)));
 			IWebHost host = null;
 			try
