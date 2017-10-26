@@ -1,0 +1,37 @@
+version: "3"
+
+services:
+  nbxplorer-ltc-main:
+    ports: 
+      - 80:32838
+    expose:
+      - 32838
+    build:
+      context: .
+      dockerfile: DockerFile
+    environment:
+      NBXPLORER_NETWORK: ltc-main
+      NBXPLORER_RPCURL: http://litecoind-lm:9332/
+      NBXPLORER_RPCUSER: ppm0
+      NBXPLORER_RPCPASSWORD: 07q03VhqcLD5
+      NBXPLORER_NODEENDPOINT: litecoind-lm:9333
+      NBXPLORER_BIND: 0.0.0.0:32838
+      NBXPLORER_NOAUTH: 1
+    links:
+      - litecoind-lm
+
+  litecoind-lm:
+    image: uphold/litecoind:latest
+    command:
+      -rpcport=9332
+      -port=9333
+      -rpcuser=ppm0
+      -rpcpassword=07q03VhqcLD5
+      -server
+      -rpcallowip=0.0.0.0/0
+      -par=16
+    expose:
+      - 9332
+      - 9333
+    ports:
+      - 9333:9333

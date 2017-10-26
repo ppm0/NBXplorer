@@ -18,4 +18,8 @@
 		<PackageReference Include="NBitcoin" Version="4.0.0.38" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\..\NBitcoin.Litecoin\NBitcoin.Litecoin\NBitcoin.Litecoin.csproj" />
+	</ItemGroup>
+
 </Project>
